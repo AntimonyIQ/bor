@@ -77,7 +77,7 @@ func NewServer(config *Config) (*Server, error) {
 	}
 
 	// register ethash service
-	if config.EthStats != nil {
+	if *config.EthStats != "" {
 		if err := ethstats.New(stack, backend.APIBackend, backend.Engine(), *config.EthStats); err != nil {
 			return nil, err
 		}
