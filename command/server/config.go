@@ -76,6 +76,7 @@ type Config struct {
 	Metrics   *MetricsConfig
 	Cache     *CacheConfig
 	Accounts  *AccountsConfig
+	GRPC      *GRPCConfig
 }
 
 type P2PConfig struct {
@@ -139,6 +140,10 @@ type JsonRPCConfig struct {
 	Http    *APIConfig
 	Ws      *APIConfig
 	Graphql *APIConfig
+}
+
+type GRPCConfig struct {
+	Addr *string
 }
 
 type APIConfig struct {
@@ -310,6 +315,9 @@ func DefaultConfig() *Config {
 			PasswordFile:        stringPtr(""),
 			AllowInsecureUnlock: boolPtr(false),
 			UseLightweightKDF:   boolPtr(false),
+		},
+		GRPC: &GRPCConfig{
+			Addr: stringPtr(":3131"),
 		},
 	}
 }

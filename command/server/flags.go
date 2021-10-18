@@ -264,7 +264,7 @@ func (c *Command) Flags() *flagset.Flagset {
 		Value: &c.cliConfig.JsonRPC.VHost,
 	})
 	f.SliceStringFlag(&flagset.SliceStringFlag{
-		Name: "jsonrpc.modules",
+		Name:  "jsonrpc.modules",
 		Usage: "API's offered over the HTTP-RPC interface",
 		Value: &c.cliConfig.JsonRPC.Modules,
 	})
@@ -443,6 +443,13 @@ func (c *Command) Flags() *flagset.Flagset {
 		Name:  "lightkdf",
 		Usage: "Reduce key-derivation RAM & CPU usage at some expense of KDF strength",
 		Value: c.cliConfig.Accounts.UseLightweightKDF,
+	})
+
+	// grpc
+	f.StringFlag(&flagset.StringFlag{
+		Name:  "grpc.addr",
+		Usage: "Address and port to bind the GRPC server",
+		Value: c.cliConfig.GRPC.Addr,
 	})
 
 	return f
